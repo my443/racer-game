@@ -5,7 +5,7 @@
 
 void main (){
     int track_width     = 12;           // Width of the track
-    int speed           = 100;          // How fast the game goes. 
+    int speed           = 75;          // How fast the game goes. The smaller the number, the faster the game. 
     
     char track[80];                     // The track = "**              **\n";
 
@@ -18,7 +18,7 @@ void main (){
     srand(time(NULL));                  // Initialization, should only be called once.
     
     // Clear the screen
-    clrscr();
+    system("cls");  
     
     // Initialize track to be blank
     // If you don't do this you get 'debris' on the track from leftover memory sometimes.
@@ -36,7 +36,7 @@ void main (){
             track[i]= 32;
         }
 
-        //sleep(100);
+        sleep(speed);
 
         track[width_from_left-2] = 'L';
         track[width_from_left-1] = 'L';
@@ -53,11 +53,11 @@ void main (){
             key_code[0] = getch();
 
         // Test to see if the player hits a wall
-        if (player_pos + width_from_left == (width_from_left)){
+        if (player_pos + width_from_left == (width_from_left-1)){
             printf("You hit the left side of the track.");
             go = 0;
         }
-        else if (player_pos + width_from_left >= (width_from_left + track_width+1)){
+        else if (player_pos + width_from_left >= (width_from_left + track_width)){
             printf("You hit the right side of the track.");
             go = 0;
         }
