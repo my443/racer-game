@@ -17,25 +17,6 @@ int evaluateKeyCode(key_code){
     }
 }
 
-const char * generate_track(int width_from_left, int track_width, int player_pos){
-    // player_pos is the number of characters from the left of the track side
-    
-    char *return_track;
-
-    // place the left side of the track. 
-    for (int i = 0; i < width_from_left; i++){
-        printf("%d", i);
-        return_track[i] = '*';
-        printf("%s", return_track);
-    }
-
-    // return_track[width_from_left] = '*';
-    // return_track[width_from_left+1] = '*';
-    //char *return_track = "     **              **\n";
-    return_track[1] = '/';
-    printf("%s", return_track);
-    return return_track;
-}
 
 void main (){
     int track_width     = 12;           // Width of the track
