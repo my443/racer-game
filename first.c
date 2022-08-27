@@ -90,11 +90,23 @@ void main (){
         // direction = 1;
         if (direction == 1){
             // printf("left");
+            // Track position goes to the left, but player positions stays the same.
             width_from_left--;
+            player_pos++;
+            // If it gets to close to the left side, make sure it doesn't go off the screen.
+            if (width_from_left == 0){
+                width_from_left = 1;
+            }
             // printf("-%d-", width_from_left);
         }
         else if (direction == 2){
+            // Track position goes to the right, but player position stays in the same place.
             width_from_left++;
+            player_pos--;
+            if (width_from_left == (79 - track_width)){
+                // Don't let it go off the right side of the screen.
+                width_from_left = (78 - track_width);
+            }
             // printf("-%d-", width_from_left);
         }
         // else - if it is a zero, the width from left doesn't change at all.
