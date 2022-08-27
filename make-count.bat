@@ -1,0 +1,1 @@
+"../tcc/tcc" count.c -o count.exe
