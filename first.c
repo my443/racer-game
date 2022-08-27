@@ -6,8 +6,10 @@
 void main (){
     int track_width     = 12;           // Width of the track
     int speed           = 100;          // How fast the game goes. 
-    int width_from_left = 20;           // Where the track appears from the left
+    
     char track[80];                     // The track = "**              **\n";
+
+    int width_from_left = 20;           // Where the track appears from the left
     int player_pos      = 6 ;           // The player starts in the center of the track. 
     int direction       = 0;            // Random number to determine which direction the track will go.
     int go_direction    = 0;            // Direction that the track will move
@@ -21,7 +23,7 @@ void main (){
         track[i]= 32;
     }
     // debug_codes(track_width, speed, track);
-
+// printf("\nbefore breakpoint %d", width_from_left);
     // printf(track);
 
     int go = 1;
@@ -31,14 +33,15 @@ void main (){
         // track = generate_track();
         //printf(generate_track(6, track_width, 5));
 
+
+        // printf("\ntop of loop: %d ", width_from_left);
+
         // Make the row blank
         for (int i = 0; i <= 80; i++){
             track[i]= 32;
         }
 
         sleep(100);
-
-        // printf("\ntop of loop: %d ", width_from_left);
 
         track[width_from_left-2] = 'L';
         track[width_from_left-1] = 'L';
@@ -82,8 +85,9 @@ void main (){
         //printf ("Left: %d Player: %d, Right: %d", width_from_left, player_pos+width_from_left, (width_from_left + track_width - 1));
         // printf(c);
 
+
         direction = rand() % 3;      // Returns a pseudo-random integer between 0 and RAND_MAX.
-        
+        // direction = 1;
         if (direction == 1){
             // printf("left");
             width_from_left--;
