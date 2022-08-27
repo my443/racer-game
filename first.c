@@ -1,12 +1,19 @@
 #include <stdio.h>
 #include <conio.h>
+#include <time.h>
+#include <stdlib.h>
 
 void main (){
     int track_width     = 12;           // Width of the track
     int speed           = 100;          // How fast the game goes. 
     int width_from_left = 20;           // Where the track appears from the left
     char track[80];                     // The track = "**              **\n";
-    int player_pos      = 6 ;    // The player starts in the center of the track. 
+    int player_pos      = 6 ;           // The player starts in the center of the track. 
+    int direction       = 0;            // Random number to determine which direction the track will go.
+    int go_direction    = 0;            // Direction that the track will move
+
+    // Initialize the random number     (https://stackoverflow.com/questions/822323/how-to-generate-a-random-int-in-c)
+    srand(time(NULL));                  // Initialization, should only be called once.
 
     // Initialize track to be blank
     // If you don't do this you get 'debris' on the track from leftover memory sometimes.
@@ -28,6 +35,10 @@ void main (){
         for (int i = 0; i <= 80; i++){
             track[i]= 32;
         }
+
+        sleep(100);
+
+        // printf("\ntop of loop: %d ", width_from_left);
 
         track[width_from_left-2] = 'L';
         track[width_from_left-1] = 'L';
@@ -70,6 +81,21 @@ void main (){
         }
         //printf ("Left: %d Player: %d, Right: %d", width_from_left, player_pos+width_from_left, (width_from_left + track_width - 1));
         // printf(c);
+
+        direction = rand() % 3;      // Returns a pseudo-random integer between 0 and RAND_MAX.
+        
+        if (direction == 1){
+            // printf("left");
+            width_from_left--;
+            // printf("-%d-", width_from_left);
+        }
+        else if (direction == 2){
+            width_from_left++;
+            // printf("-%d-", width_from_left);
+        }
+        // else - if it is a zero, the width from left doesn't change at all.
+        //width_from_left = width_from_left-2;
+        // printf("\nbottom of loop %d", width_from_left);
     }
 }
 
