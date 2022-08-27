@@ -1,23 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
 
-void debug_codes(int track_width, int speed, char track[]){
-    printf("Track Width: %d\n", track_width);
-    printf("Speed:       %d\n", speed);
-    printf("Track:       %s\n", track);
-}
-
-int evaluateKeyCode(key_code){
-    if (key_code == 'q'){
-        return 0;
-    }
-    else
-    {
-        return 1;
-    }
-}
-
-
 void main (){
     int track_width     = 12;           // Width of the track
     int speed           = 100;          // How fast the game goes. 
@@ -37,6 +20,7 @@ void main (){
     int go = 1;
 
     while (go){
+        char key_code[1];
         // track = generate_track();
         //printf(generate_track(6, track_width, 5));
 
@@ -44,6 +28,7 @@ void main (){
         for (int i = 0; i <= 80; i++){
             track[i]= 32;
         }
+
         track[width_from_left-2] = 'L';
         track[width_from_left-1] = 'L';
 
@@ -53,14 +38,14 @@ void main (){
         track[width_from_left + track_width + 1] = 'R';
 
         printf("%s\n", track);
-
-        char key_code[1];
         
         // If a key is pressed, capture it.
         if ( kbhit() )
             key_code[0] = getch();
 
-        // Determine what should be done with the key.
+        // a) Determine what should be done with the key.
+        // b) Move the character
+        // c) Test to see if a crash has happened.
         if (key_code[0] == 'q'){
             go = 0;
             printf("Stopped here");
@@ -68,15 +53,22 @@ void main (){
         else if (key_code[0] == 'j'){
             // Subtract player position
             player_pos--;
-            // printf("Left");
+            if (player_pos + width_from_left == (width_from_left-1)){
+                printf("You hit the left side of the track.");
+                go = 0;
+            }
             key_code[0] =' ';
         }        
         else if (key_code[0] == 'l'){
             // Add player position
             player_pos++;
-            // printf("Right");
+            if (player_pos+width_from_left == (width_from_left + track_width)){
+                printf("You hit the right side of the track.");
+                go = 0;
+            }            
             key_code[0] =' ';
         }
+        //printf ("Left: %d Player: %d, Right: %d", width_from_left, player_pos+width_from_left, (width_from_left + track_width - 1));
         // printf(c);
     }
 }
