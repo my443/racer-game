@@ -23,7 +23,7 @@ void main (){
     int speed           = 100;          // How fast the game goes. 
     int width_from_left = 20;           // Where the track appears from the left
     char track[80];                     // The track = "**              **\n";
-    int player_pos      = 6;    // The player starts in the center of the track. 
+    int player_pos      = 6 ;    // The player starts in the center of the track. 
 
     // Initialize track to be blank
     // If you don't do this you get 'debris' on the track from leftover memory sometimes.
@@ -40,29 +40,17 @@ void main (){
         // track = generate_track();
         //printf(generate_track(6, track_width, 5));
 
-        // Make space from the left
-        for (int i = 0; i < width_from_left; i++){
-            track[i] = ' ';
+        // Make the row blank
+        for (int i = 0; i <= 80; i++){
+            track[i]= 32;
         }
-
         track[width_from_left-2] = 'L';
         track[width_from_left-1] = 'L';
 
-        // Space before player
-        for (int i = width_from_left+2; i < player_pos + width_from_left; i++){
-            track[i] = ' ';
-        }
+        track[player_pos+width_from_left] = '*';
 
-        track[player_pos + width_from_left] = '*';
-
-        // // Space after player
-        // for (int i = 0; i< track_width - player_pos; i++){
-        //     track[i] = ' ';
-        // }
-
-        // track[width_from_left + track_width] = '|';
-        // track[width_from_left + track_width + 1] = '|';
-        track[80]=' ';
+        track[width_from_left + track_width] = 'R';
+        track[width_from_left + track_width + 1] = 'R';
 
         printf("%s\n", track);
 
@@ -78,10 +66,16 @@ void main (){
             printf("Stopped here");
         }
         else if (key_code[0] == 'j'){
-            printf("Left");
+            // Subtract player position
+            player_pos--;
+            // printf("Left");
+            key_code[0] =' ';
         }        
         else if (key_code[0] == 'l'){
-            printf("Right");
+            // Add player position
+            player_pos++;
+            // printf("Right");
+            key_code[0] =' ';
         }
         // printf(c);
     }
