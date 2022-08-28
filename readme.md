@@ -9,6 +9,11 @@ I hope you enjoy this classic racing game.
 It was compiled using [Tiny C Compiler](https://bellard.org/tcc/) on a Windows machine. 
 For those of you who want to run this on Windows, you can go to the bin folder and run the exe. 
 
+## To Run This Game
+
+* Compile first.c with a C compiler
+* Run the executable.
+
 ## Why Is This Useful?
 
 Aside from allowing me to achieve a childhood dream, this project is helpful in a number of ways. 
