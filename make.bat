@@ -1,1 +1,1 @@
-"../tcc/tcc" first.c -o first.exe
+"../tcc/tcc" first.c -o ./bin/first.exe
