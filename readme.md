@@ -14,10 +14,16 @@ For those of you who want to run this on Windows, you can go to the bin folder a
 * Compile first.c with a C compiler
 * Run the executable.
 
+## The Pictures
+![image info](https://github.com/my443/racer-game/blob/master/img/intro_screen.png)
+
+![image info](https://github.com/my443/racer-game/blob/master/img/racing.png)
+
 ## Why Is This Useful?
 
 Aside from allowing me to achieve a childhood dream, this project is helpful in a number of ways. 
 1. It gives me a quick and practical learning experience in C. C is still used everywhere. Most recently C is a big part of webassembly. Webassembly is an important piece in the evolution of the web. 
 2. If someone else who is learning C wanted to look at this code for examples they will find simple, but practical, ways to use the code. 
 3. If you wanted to use this as a starter for your own C learning you could. I've included some TODOs at the bottom of the main code (first.c) which could get you started. 
+
 
